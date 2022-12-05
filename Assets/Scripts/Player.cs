@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     const string SLIDE = "slide";
 
     public GameObject explosion;
+    public GameObject ExplosionB;
+    public GameObject ExplosionC;
+    public GameObject ExplosionD;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +79,15 @@ public class Player : MonoBehaviour
             clone.transform.position = Enemy.transform.position;
             Destroy(Enemy.gameObject);
             print("KABOOM!, Enemy terminated!");
+
+            clone = Instantiate(ExplosionB);
+            clone.transform.position = Enemy.transform.position;
+            
+            clone = Instantiate(ExplosionC);
+            clone.transform.position = Enemy.transform.position;
+
+            clone = Instantiate(ExplosionD);
+            clone.transform.position = Enemy.transform.position;
         }
     }
 

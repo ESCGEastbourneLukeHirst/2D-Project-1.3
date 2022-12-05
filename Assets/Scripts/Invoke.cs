@@ -5,17 +5,36 @@ using UnityEngine;
 public class Invoke : MonoBehaviour
 {
     public GameObject Explosion;
+    public GameObject ExplosionB;
+    public GameObject ExplosionC;
+    public GameObject ExplosionD;
 
     void Start()
     {
-        InvokeRepeating("SpawnObject", 2, 1);
-        Destroy(Explosion, 3.0f);
+        Invoke("SpawnObject", 0.3f);
+        Destroy(Explosion, 2f);
+        Destroy(ExplosionB, 3f);
+        Destroy(ExplosionC, 4f);
+        Destroy(ExplosionD, 5f);
     }
 
     void SpawnObject()
     {
-        float x = Random.Range(-2.0f, 2.0f);
-        float z = Random.Range(-2.0f, 2.0f);
-        Instantiate(Explosion, new Vector3(x, 6, z), Quaternion.identity);
+        Instantiate(Explosion, new Vector2(3, 2), Quaternion.identity);
+        Instantiate(ExplosionB, new Vector2(3, 2), Quaternion.identity);
+        Instantiate(ExplosionC, new Vector2(3, 2), Quaternion.identity);
+        Instantiate(ExplosionD, new Vector2(3, 2), Quaternion.identity);
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            // After 15 seconds, Cancel the Invoked Method with this key |
+            //                                                           |
+            //                                                           |
+            //                                                           \/
+            //                                                           X
+            CancelInvoke();
+        }
     }
 }
